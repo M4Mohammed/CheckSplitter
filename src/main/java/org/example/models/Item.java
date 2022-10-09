@@ -7,7 +7,7 @@ import java.util.List;
 public class Item {
     private float price;
     private List<User> users;
-    private static InputHandler inputHandler = new InputHandler();
+    private static InputHandler inputHandler;
 
     public Item() {
         this.price = inputHandler.itemPricePrompt();

@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Scanner;
 public class InputHandler {
 
-    public InputHandler() {
-
+    private InputHandler() {
+        throw new IllegalStateException("Utility Class");
     }
 
     private static final Scanner consoleInput = new Scanner(System.in);
