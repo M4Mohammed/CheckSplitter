@@ -1,15 +1,17 @@
 package org.example.models;
 
+import org.example.iohandlers.InputHandler;
+
 import java.util.List;
 
 public class Item {
     private float price;
-
     private List<User> users;
+    private static InputHandler inputHandler = new InputHandler();
 
-    public Item(float price, List<User> users) {
-        this.price = price;
-        this.users = users;
+    public Item() {
+        this.price = inputHandler.itemPricePrompt();
+        this.users = InputHandler.participantsPrompt();
     }
 
     public int returnNumberOfParticipants() {
