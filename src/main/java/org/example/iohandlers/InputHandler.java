@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-public class InputHandler {
+public final class InputHandler {
 
     private InputHandler() {
         throw new IllegalStateException("Utility Class");
@@ -28,6 +28,12 @@ public class InputHandler {
             users.add(new User(participant));
         }
         return users;
+    }
+
+
+    public static boolean exitPrompt () {
+        System.out.println("Exit ? (y/n)");
+        return consoleInput.nextLine().equals("y");
     }
 
 
