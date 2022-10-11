@@ -6,10 +6,10 @@ import org.example.models.ShoppingCart;
 
 public class CheckoutHandler implements ICheckoutHandler {
     private static CheckoutHandler uniqueInstance;
-    ISharesHandler ISharesHandler;
+    ISharesHandler sharesHandler;
 
     private CheckoutHandler() {
-        ISharesHandler = SharesHandler.getInstance();
+        sharesHandler = SharesHandler.getInstance();
     }
 
     public static CheckoutHandler getInstance() {
@@ -24,14 +24,14 @@ public class CheckoutHandler implements ICheckoutHandler {
 
         for (Item item :
                 MyShoppingCart.getMyShoppingCart()) {
-            calculateParticipantSharePerItem(ISharesHandler, item);
+            calculateParticipantSharePerItem(sharesHandler, item);
         }
     }
 
-    private void calculateParticipantSharePerItem(ISharesHandler ISharesHandler, Item item) {
+    private void calculateParticipantSharePerItem(ISharesHandler sharesHandler, Item item) {
         for (Participant participant :
                 item.getFarmers()) {
-            participant.addItemToTab(ISharesHandler.calculateFarmerShareOfItem(item));
+            participant.addItemToTab(sharesHandler.calculateFarmerShareOfItem(item));
         }
     }
 

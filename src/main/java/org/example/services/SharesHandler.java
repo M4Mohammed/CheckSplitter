@@ -10,9 +10,6 @@ public class SharesHandler implements ISharesHandler {
     }
 
     public static SharesHandler getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new SharesHandler();
-        }
         return uniqueInstance;
     }
     @Override
