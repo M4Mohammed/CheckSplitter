@@ -5,11 +5,18 @@ import org.example.models.Item;
 import org.example.models.ShoppingCart;
 
 public class CheckoutHandler implements ICheckoutHandler {
-    private static CheckoutHandler uniqueInstance = new CheckoutHandler();
+    private static CheckoutHandler uniqueInstance;
     ISharesHandler ISharesHandler;
 
     private CheckoutHandler() {
         ISharesHandler = SharesHandler.getInstance();
+    }
+
+    public static CheckoutHandler getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new CheckoutHandler();
+        }
+        return uniqueInstance;
     }
 
     @Override

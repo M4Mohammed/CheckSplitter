@@ -12,10 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-
     public static void main(String[] args) {
 
-     ICheckoutHandler ICheckoutHandler = new CheckoutHandler(new SharesHandler());
+        //checkout handler instance
+        ICheckoutHandler checkoutHandler = CheckoutHandler.getInstance();
         ShoppingCart MyShoppingCart = new ShoppingCart(new ArrayList<>());
 
         List<Participant> participants = InputHandler.createParticipantGroupPrompt();
@@ -24,7 +24,7 @@ public class Main {
             MyShoppingCart.addItem(new Item(InputHandler.itemPricePrompt(), InputHandler.chooseItemParticipantsPrompt(participants)));
         }
 
-        ICheckoutHandler.calculateMoneyOwedByEachParticipant(MyShoppingCart);
+        checkoutHandler.calculateMoneyOwedByEachParticipant(MyShoppingCart);
 
         //print out the tab for each participant
         participants.stream().forEach(participant -> System.out.println(participant.getName() + " owes " + participant.getTab()));
