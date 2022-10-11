@@ -1,10 +1,10 @@
 package org.example.models;
 
-public class User {
+public class Participant {
     public float tab;
     public String name;
 
-    public User(String name) {
+    public Participant(String name) {
         this.name = name;
     }
 
@@ -16,8 +16,8 @@ public class User {
         this.name = name;
     }
 
-    public void addItemToTab(float FarmerShareOfItem) {
-        tab += FarmerShareOfItem;
+    public void addItemToTab(float userShareOfItem) {
+        tab += userShareOfItem;
     }
 
     public float getTab() {

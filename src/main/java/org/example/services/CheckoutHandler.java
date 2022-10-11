@@ -1,6 +1,6 @@
 package org.example.services;
 
-import org.example.models.User;
+import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
 
@@ -11,18 +11,18 @@ public class CheckoutHandler {
         this.sharesHandlerService = sharesHandlerService;
     }
 
-    public void calculateTotalSumForEachFarmer(ShoppingCart MyShoppingCart) {
+    public void calculateMoneyOwedByEachParticipant(ShoppingCart MyShoppingCart) {
 
         for (Item item :
                 MyShoppingCart.getMyShoppingCart()) {
-            calculateParticipantShare(sharesHandlerService, item);
+            calculateParticipantSharePerItem(sharesHandlerService, item);
         }
     }
 
-    private void calculateParticipantShare(SharesHandlerService sharesHandlerService, Item item) {
-        for (User user :
+    private void calculateParticipantSharePerItem(SharesHandlerService sharesHandlerService, Item item) {
+        for (Participant participant :
                 item.getFarmers()) {
-            user.addItemToTab(sharesHandlerService.calculateFarmerShareOfItem(item));
+            participant.addItemToTab(sharesHandlerService.calculateFarmerShareOfItem(item));
         }
     }
 }

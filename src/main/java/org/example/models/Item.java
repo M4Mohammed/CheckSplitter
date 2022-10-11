@@ -5,23 +5,23 @@ import java.util.List;
 public class Item {
     private float price;
 
-    private List<User> users;
+    private List<Participant> participants;
 
-    public Item(float price, List<User> users) {
-        this.price = price;
-        this.users = users;
+    public Item(float itemPricePrompt, List<Participant> participants) {
+        this.price = itemPricePrompt;
+        this.participants = participants;
     }
 
     public int returnNumberOfParticipants() {
-        return users.size();
+        return participants.size();
     }
 
-    public List<User> getFarmers() {
-        return users;
+    public List<Participant> getFarmers() {
+        return participants;
     }
 
-    public void setFarmers(List<User> users) {
-        this.users = users;
+    public void setFarmers(List<Participant> participants) {
+        this.participants = participants;
     }
 
     public float getPrice() {
