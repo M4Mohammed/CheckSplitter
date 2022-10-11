@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.IOHandlers.InputHandler;
+import org.example.iohandlers.InputHandler;
 import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
