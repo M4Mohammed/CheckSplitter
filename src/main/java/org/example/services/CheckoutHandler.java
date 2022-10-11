@@ -4,25 +4,28 @@ import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
 
-public class CheckoutHandler {
-    SharesHandlerService sharesHandlerService;
+public class CheckoutHandler implements ICheckoutHandler {
+    ISharesHandler ISharesHandler;
 
-    public CheckoutHandler(SharesHandlerService sharesHandlerService) {
-        this.sharesHandlerService = sharesHandlerService;
+    public CheckoutHandler(ISharesHandler ISharesHandler) {
+        this.ISharesHandler = ISharesHandler;
     }
 
+
+    @Override
     public void calculateMoneyOwedByEachParticipant(ShoppingCart MyShoppingCart) {
 
         for (Item item :
                 MyShoppingCart.getMyShoppingCart()) {
-            calculateParticipantSharePerItem(sharesHandlerService, item);
+            calculateParticipantSharePerItem(ISharesHandler, item);
         }
     }
 
-    private void calculateParticipantSharePerItem(SharesHandlerService sharesHandlerService, Item item) {
+    private void calculateParticipantSharePerItem(ISharesHandler ISharesHandler, Item item) {
         for (Participant participant :
                 item.getFarmers()) {
-            participant.addItemToTab(sharesHandlerService.calculateFarmerShareOfItem(item));
+            participant.addItemToTab(ISharesHandler.calculateFarmerShareOfItem(item));
         }
     }
+
 }

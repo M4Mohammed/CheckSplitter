@@ -3,8 +3,7 @@ package org.example.services;
 
 import org.example.models.Item;
 
-public class SharesHandler implements SharesHandlerService {
-
+public class SharesHandler implements ISharesHandler {
     @Override
     public float calculateFarmerShareOfItem(Item item){
         float MoneyOwed;
@@ -13,4 +12,5 @@ public class SharesHandler implements SharesHandlerService {
 
         return MoneyOwed;
     }
+
 }
