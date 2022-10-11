@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class InputHandler {
+public final class InputHandler {
+    private InputHandler() {
+    }
 
     public static Scanner consoleInput = new Scanner(System.in);
 
@@ -35,7 +37,7 @@ public class InputHandler {
         List<String> participantsNames = Arrays.asList(InputHandler.consoleInput.nextLine().split(","));
 
         List<Participant> chosenParticipants = new ArrayList<>();
-        participantsNames.stream().forEach(participantName -> {
+        participantsNames.forEach(participantName -> {
             for (Participant participant : participants) {
                 if (participant.getName().equals(participantName)) {
                     chosenParticipants.add(participant);
