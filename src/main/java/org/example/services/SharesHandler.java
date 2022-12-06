@@ -3,7 +3,7 @@ package org.example.services;
 
 import org.example.models.Item;
 
-public class SharesHandler implements ISharesHandler {
+public class SharesHandler {
     private static SharesHandler uniqueInstance = new SharesHandler();
 
     private SharesHandler() {
@@ -12,9 +12,9 @@ public class SharesHandler implements ISharesHandler {
     public static SharesHandler getInstance() {
         return uniqueInstance;
     }
-    @Override
-    public float calculateFarmerShareOfItem(Item item){
-        float MoneyOwed;
+
+    public double calculateFarmerShareOfItem(Item item){
+        double MoneyOwed;
 
         MoneyOwed = item.getPrice() / item.returnNumberOfParticipants();
 

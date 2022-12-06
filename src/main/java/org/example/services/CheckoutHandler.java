@@ -4,9 +4,9 @@ import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
 
-public class CheckoutHandler implements ICheckoutHandler {
+public class CheckoutHandler {
     private static CheckoutHandler uniqueInstance;
-    ISharesHandler sharesHandler;
+    SharesHandler sharesHandler;
 
     private CheckoutHandler() {
         sharesHandler = SharesHandler.getInstance();
@@ -19,7 +19,7 @@ public class CheckoutHandler implements ICheckoutHandler {
         return uniqueInstance;
     }
 
-    @Override
+
     public void calculateMoneyOwedByEachParticipant(ShoppingCart MyShoppingCart) {
 
         for (Item item :
@@ -28,7 +28,7 @@ public class CheckoutHandler implements ICheckoutHandler {
         }
     }
 
-    private void calculateParticipantSharePerItem(ISharesHandler sharesHandler, Item item) {
+    private void calculateParticipantSharePerItem(SharesHandler sharesHandler, Item item) {
         for (Participant participant :
                 item.getFarmers()) {
             participant.addItemToTab(sharesHandler.calculateFarmerShareOfItem(item));

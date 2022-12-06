@@ -3,11 +3,11 @@ package org.example.models;
 import java.util.List;
 
 public class Item {
-    private float price;
+    private double price;
 
     private List<Participant> participants;
 
-    public Item(float itemPricePrompt, List<Participant> participants) {
+    public Item(double itemPricePrompt, List<Participant> participants) {
         this.price = itemPricePrompt;
         this.participants = participants;
     }
@@ -24,7 +24,7 @@ public class Item {
         this.participants = participants;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 

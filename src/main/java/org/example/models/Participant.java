@@ -1,7 +1,7 @@
 package org.example.models;
 
 public class Participant {
-    public float tab;
+    public double tab;
     public String name;
 
     public Participant(String name) {
@@ -16,11 +16,11 @@ public class Participant {
         this.name = name;
     }
 
-    public void addItemToTab(float userShareOfItem) {
+    public void addItemToTab(double userShareOfItem) {
         tab += userShareOfItem;
     }
 
-    public float getTab() {
+    public double getTab() {
         return tab;
     }
 }

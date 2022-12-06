@@ -5,8 +5,6 @@ import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
 import org.example.services.CheckoutHandler;
-import org.example.services.ICheckoutHandler;
-import org.example.services.SharesHandler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         //checkout handler instance
-        ICheckoutHandler checkoutHandler = CheckoutHandler.getInstance();
+        CheckoutHandler checkoutHandler = CheckoutHandler.getInstance();
         ShoppingCart MyShoppingCart = new ShoppingCart(new ArrayList<>());
 
         List<Participant> participants = InputHandler.createParticipantGroupPrompt();

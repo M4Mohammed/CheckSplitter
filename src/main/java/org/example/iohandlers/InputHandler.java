@@ -11,17 +11,17 @@ public final class InputHandler {
     private InputHandler() {
     }
 
-    public static Scanner consoleInput = new Scanner(System.in);
+    public static final Scanner consoleInput = new Scanner(System.in);
 
-    public static int itemPricePrompt() {
+    public static double itemPricePrompt() {
         System.out.println("Enter item price: ");
-        return Integer.parseInt(InputHandler.consoleInput.nextLine());
+        return Double.parseDouble(InputHandler.consoleInput.nextLine());
     }
 
     public static List<Participant> createParticipantGroupPrompt() {
         List<Participant> participants = new ArrayList<>();
         System.out.println("Define the group of participants for this shopping cart: ");
-        List<String> participantsNames = Arrays.asList(InputHandler.consoleInput.nextLine().split(","));
+        String[] participantsNames = InputHandler.consoleInput.nextLine().split(",");
         for (String name : participantsNames) {
             participants.add(new Participant(name));
         }
@@ -31,7 +31,7 @@ public final class InputHandler {
 
 
     public static List<Participant> chooseItemParticipantsPrompt(List<Participant> participants) {
-        participants.stream().forEach(participant -> System.out.println(participant.getName()));
+        participants.forEach(participant -> System.out.println(participant.getName()));
         System.out.println("Choose the participants for this item: ");
 
         List<String> participantsNames = Arrays.asList(InputHandler.consoleInput.nextLine().split(","));
@@ -50,6 +50,6 @@ public final class InputHandler {
 
     public static boolean isDoneAddingItems() {
         System.out.println("Are you done adding items? (y/n)");
-        return InputHandler.consoleInput.nextLine().toLowerCase().equals("y");
+        return InputHandler.consoleInput.nextLine().equalsIgnoreCase("y");
     }
 }
