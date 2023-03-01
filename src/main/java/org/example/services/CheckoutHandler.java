@@ -3,22 +3,17 @@ package org.example.services;
 import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CheckoutHandler {
-    private static CheckoutHandler uniqueInstance;
-    SharesHandler sharesHandler;
+    private final SharesHandler sharesHandler;
 
-    private CheckoutHandler() {
-        sharesHandler = SharesHandler.getInstance();
+    @Autowired
+    public CheckoutHandler(SharesHandler sharesHandler) {
+        this.sharesHandler = sharesHandler;
     }
-
-    public static CheckoutHandler getInstance() {
-        if (uniqueInstance == null) {
-            uniqueInstance = new CheckoutHandler();
-        }
-        return uniqueInstance;
-    }
-
 
     public void calculateMoneyOwedByEachParticipant(ShoppingCart MyShoppingCart) {
 

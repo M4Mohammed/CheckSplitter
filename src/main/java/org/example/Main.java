@@ -1,10 +1,14 @@
 package org.example;
 
+import org.example.config.ProjectConfig;
 import org.example.iohandlers.InputHandler;
 import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
 import org.example.services.CheckoutHandler;
+import org.example.services.SharesHandler;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +16,10 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
+        ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+        CheckoutHandler checkoutHandler = context.getBean(CheckoutHandler.class);
+
         //checkout handler instance
-        CheckoutHandler checkoutHandler = CheckoutHandler.getInstance();
         ShoppingCart MyShoppingCart = new ShoppingCart(new ArrayList<>());
 
         List<Participant> participants = InputHandler.createParticipantGroupPrompt();
