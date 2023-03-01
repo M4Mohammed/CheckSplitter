@@ -4,12 +4,15 @@ package org.example.services;
 import org.example.models.Item;
 
 public class SharesHandler {
-    private static SharesHandler uniqueInstance = new SharesHandler();
+    private static SharesHandler uniqueInstance;
 
     private SharesHandler() {
     }
 
     public static SharesHandler getInstance() {
+        if (uniqueInstance == null) {
+            uniqueInstance = new SharesHandler();
+        }
         return uniqueInstance;
     }
 

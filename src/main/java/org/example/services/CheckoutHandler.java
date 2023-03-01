@@ -19,7 +19,6 @@ public class CheckoutHandler {
         return uniqueInstance;
     }
 
-
     public void calculateMoneyOwedByEachParticipant(ShoppingCart MyShoppingCart) {
 
         for (Item item :
@@ -30,8 +29,8 @@ public class CheckoutHandler {
 
     private void calculateParticipantSharePerItem(SharesHandler sharesHandler, Item item) {
         for (Participant participant :
-                item.getFarmers()) {
-            participant.addItemToTab(sharesHandler.calculateFarmerShareOfItem(item));
+                item.getParticipants()) {
+            participant.setTab(sharesHandler.calculateFarmerShareOfItem(item));
         }
     }
 

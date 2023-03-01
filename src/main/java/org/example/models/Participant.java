@@ -2,7 +2,7 @@ package org.example.models;
 
 public class Participant {
     public double tab;
-    public String name;
+    public final String name;
 
     public Participant(String name) {
         this.name = name;
@@ -12,11 +12,7 @@ public class Participant {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void addItemToTab(double userShareOfItem) {
+    public void setTab(double userShareOfItem) {
         tab += userShareOfItem;
     }
 

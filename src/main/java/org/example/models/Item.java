@@ -16,19 +16,12 @@ public class Item {
         return participants.size();
     }
 
-    public List<Participant> getFarmers() {
+    public List<Participant> getParticipants() {
         return participants;
-    }
-
-    public void setFarmers(List<Participant> participants) {
-        this.participants = participants;
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
 }
