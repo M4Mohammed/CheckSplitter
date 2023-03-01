@@ -1,5 +1,6 @@
 package org.example.services;
 
+import lombok.RequiredArgsConstructor;
 import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
@@ -7,13 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class CheckoutHandler {
     private final SharesHandler sharesHandler;
-
-    @Autowired
-    public CheckoutHandler(SharesHandler sharesHandler) {
-        this.sharesHandler = sharesHandler;
-    }
 
     public void calculateMoneyOwedByEachParticipant(ShoppingCart MyShoppingCart) {
 
