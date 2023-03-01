@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.models.Participant;
 import org.example.models.Item;
 import org.example.models.ShoppingCart;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -22,8 +21,8 @@ public class CheckoutHandler {
 
     private void calculateParticipantSharePerItem(SharesHandler sharesHandler, Item item) {
         for (Participant participant :
-                item.getFarmers()) {
-            participant.addItemToTab(sharesHandler.calculateFarmerShareOfItem(item));
+                item.getParticipants()) {
+            participant.setTab(sharesHandler.calculateFarmerShareOfItem(item));
         }
     }
 
