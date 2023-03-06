@@ -1,38 +1,46 @@
 package org.example;
 
-import org.example.config.ProjectConfig;
-import org.example.iohandlers.InputHandler;
-import org.example.models.Participant;
-import org.example.models.Item;
-import org.example.models.ShoppingCart;
-import org.example.services.CheckoutHandler;
-import org.example.services.SharesHandler;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.example.models.Receipt;
+import org.example.services.IOService;
+import org.example.services.ReceiptSplitterService;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        Receipt receipt;
 
-        ApplicationContext context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        CheckoutHandler checkoutHandler = context.getBean(CheckoutHandler.class);
+        IOService.mainMenuPrompt();
 
-        //checkout handler instance
-        ShoppingCart MyShoppingCart = new ShoppingCart(new ArrayList<>());
+        while (true) {
+            int option = IOService.mainMenuInput();
 
-        List<Participant> participants = InputHandler.createParticipantGroupPrompt();
+            switch (option) {
+                case 1:
+                    IOService.createParticipantGroupPrompt();
+                    receipt = new Receipt(IOService.createParticipantGroupInput(), new ArrayList<>());
 
-        while(!InputHandler.isDoneAddingItems()) {
-            MyShoppingCart.addItem(new Item(InputHandler.itemPricePrompt(), InputHandler.chooseItemParticipantsPrompt(participants)));
+                    while (true) {
+                        IOService.itemDataPrompt(receipt);
+                        receipt.addItem(IOService.itemDataInput(receipt));
+
+                        IOService.addAnotherItemPrompt();
+                        if (!IOService.addAnotherItemInput()) {
+                            break;
+                        }
+                    }
+
+                    IOService.receiptPrompt();
+                    IOService.receiptItemPrompt(receipt);
+
+                    ReceiptSplitterService.calculateShares(receipt);
+                    break;
+                case 2:
+                    System.out.println("Exiting program...");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid option! Please select again.");
+            }
         }
-
-        checkoutHandler.calculateMoneyOwedByEachParticipant(MyShoppingCart);
-
-        //print out the tab for each participant
-        participants.stream().forEach(participant -> System.out.println(participant.getName() + " owes " + participant.getTab()));
-
-
     }
 }
