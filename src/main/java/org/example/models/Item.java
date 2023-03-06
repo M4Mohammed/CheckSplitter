@@ -1,27 +1,20 @@
 package org.example.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.List;
 
+@Getter
+@Setter
+@Builder
+@AllArgsConstructor
 public class Item {
+    private String name;
     private double price;
-
+    private int quantity;
     private List<Participant> participants;
-
-    public Item(double itemPricePrompt, List<Participant> participants) {
-        this.price = itemPricePrompt;
-        this.participants = participants;
-    }
-
-    public int returnNumberOfParticipants() {
-        return participants.size();
-    }
-
-    public List<Participant> getParticipants() {
-        return participants;
-    }
-
-    public double getPrice() {
-        return price;
-    }
 
 }

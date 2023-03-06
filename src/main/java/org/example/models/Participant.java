@@ -1,22 +1,14 @@
 package org.example.models;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class Participant {
-    public double tab;
-    public final String name;
+    private final String name;
+    public double total;
 
-    public Participant(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setTab(double userShareOfItem) {
-        tab += userShareOfItem;
-    }
-
-    public double getTab() {
-        return tab;
-    }
 }
