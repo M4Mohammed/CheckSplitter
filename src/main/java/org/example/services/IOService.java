@@ -15,7 +15,7 @@ public final class IOService {
 
     //main menu
     public static void mainMenuPrompt() {
-        System.out.println("Welcome to the Receipt Splitter App");
+        System.out.println("\nWelcome to the Receipt Splitter App");
         System.out.println("Please select an option: ");
         System.out.println("1. Create a new receipt");
         System.out.println("2. Exit");
@@ -34,7 +34,7 @@ public final class IOService {
 
 
     public static void createParticipantGroupPrompt() {
-        System.out.println("Define the group of participants for this shopping cart (separated by commas): ");
+        System.out.println("\nDefine the group of participants for this shopping cart (separated by commas): ");
     }
 
     public static List<Participant> createParticipantGroupInput() {
@@ -50,6 +50,7 @@ public final class IOService {
     public static void itemDataPrompt(Receipt receipt) {
         System.out.println("Enter the name of the item, the price, the quantity, and the participants (separated by commas): \n");
         receipt.getParticipants().forEach(p -> System.out.print(p.getName() + " "));
+        System.out.println();
     }
 
     public static Item itemDataInput(Receipt receipt) {

@@ -10,9 +10,10 @@ public class Main {
     public static void main(String[] args) {
         Receipt receipt;
 
-        IOService.mainMenuPrompt();
 
         while (true) {
+
+            IOService.mainMenuPrompt();
             int option = IOService.mainMenuInput();
 
             switch (option) {

@@ -1,6 +1,5 @@
 package org.example.services;
 
-import org.example.models.Item;
 import org.example.models.Participant;
 import org.example.models.Receipt;
 
