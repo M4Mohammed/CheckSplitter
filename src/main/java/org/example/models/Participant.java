@@ -1,12 +1,8 @@
 package org.example.models;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@RequiredArgsConstructor
+@Data
 public class Participant {
     private final String name;
     public double total;

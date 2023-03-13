@@ -7,6 +7,8 @@ import org.example.services.ReceiptSplitterService;
 import java.util.ArrayList;
 
 public class Main {
+
+
     public static void main(String[] args) {
         Receipt receipt;
 
@@ -17,10 +19,9 @@ public class Main {
             int option = IOService.mainMenuInput();
 
             switch (option) {
-                case 1:
+                case 1 -> {
                     IOService.createParticipantGroupPrompt();
                     receipt = new Receipt(IOService.createParticipantGroupInput(), new ArrayList<>());
-
                     while (true) {
                         IOService.itemDataPrompt(receipt);
                         receipt.addItem(IOService.itemDataInput(receipt));
@@ -30,17 +31,15 @@ public class Main {
                             break;
                         }
                     }
-
                     IOService.receiptPrompt();
                     IOService.receiptItemPrompt(receipt);
-
                     ReceiptSplitterService.calculateShares(receipt);
-                    break;
-                case 2:
+                }
+                case 2 -> {
                     System.out.println("Exiting program...");
                     System.exit(0);
-                default:
-                    System.out.println("Invalid option! Please select again.");
+                }
+                default -> System.out.println("Invalid option! Please select again.");
             }
         }
     }

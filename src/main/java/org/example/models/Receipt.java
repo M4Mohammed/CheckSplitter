@@ -1,18 +1,14 @@
 package org.example.models;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 
-@Getter
-@Setter
-@AllArgsConstructor
+@Data
 public class Receipt {
 
     private final List<Participant> participants;
-    public List<Item> items;
+    private final List<Item> items;
 
     public void addItem(Item item) {
         items.add(item);

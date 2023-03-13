@@ -39,7 +39,7 @@ public final class IOService {
 
     public static List<Participant> createParticipantGroupInput() {
         List<Participant> participants = new ArrayList<>();
-        String[] participantsNames = consoleInput.nextLine().strip().split(",");
+        String[] participantsNames = consoleInput.nextLine().replaceAll("\\s","").split(",");
         for (String name : participantsNames) {
             participants.add(new Participant(name));
         }
@@ -64,12 +64,12 @@ public final class IOService {
 
                 List<Participant> itemParticipants = new ArrayList<>();
                 if (itemData.length > 3) {
-                    String[] participantNames = itemData[3].split("\\s+");
+                    String[] participantNames = itemData[3].strip().split("\\s+");
                     for (String pName : participantNames) {
                         Participant participant = receipt.getParticipants().stream()
                                 .filter(p -> p.getName().equals(pName))
                                 .findFirst()
-                                .orElse(new Participant(pName));
+                                .orElseThrow();
                         itemParticipants.add(participant);
                     }
                 }
